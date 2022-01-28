@@ -1,0 +1,8 @@
+{
+  "name": "CredScoringApp Mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "c2f149d1"
+}
