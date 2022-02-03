@@ -1,0 +1,71 @@
+ion-card.md{
+    margin: 20px;
+    padding: 0 5px;
+}
+
+.md ion-buttons.ios{
+    display: none;
+}
+
+.ios ion-buttons.md{
+    display: none;
+}
+
+.ios ion-title{
+    left: 30px
+}
+
+.md ion-title{
+    margin-left: -20px;
+}
+
+.ios ion-buttons{
+    margin-bottom: 5px;
+    color: rgb(231, 53, 157);
+}
+
+ion-menu-button{
+    color: rgb(231, 53, 157);
+}
+
+ion-card-title{
+    font-size: 25px;
+}
+
+ion-card-header{
+    text-align: center;
+}
+
+.head{
+    color: rgb(115, 157, 236);
+    font-size: 17px;
+    margin-top: 10px;
+}
+.text{
+    color: #ffffff;
+    font-size: 15px;
+}
+
+ion-icon{
+    margin-bottom: -2px;
+}
+
+.NoProgress{
+    text-align: center;
+    color: #ffffff;
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.NotFound ion-icon{
+    margin-top: 20px;
+    font-size: 60px;
+    color: rgb(226, 78, 164);
+}
+.NotFound .head{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.NotFound .text{
+    font-size: 18px;
+}

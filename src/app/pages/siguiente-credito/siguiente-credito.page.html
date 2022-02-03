@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Próximo crédito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ios">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title size="large">Próximo crédito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="container">
+    <div *ngIf="nextCredit > 0">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Cantidad sugerida a prestar</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="quantity">
+            <ion-icon name="cash-outline"></ion-icon>
+            <p class="head">{{nextCredit | currency:'DOP':'RD$'}}</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Servicios posibles</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="services">
+            <p class="head">Prestamo para:</p>
+          <div class="servicios" *ngFor="let servicio of servicios"> <!-- se repetira varias veces-->
+              <p class="text"><ion-icon name="{{servicio.value}}"></ion-icon> {{servicio.valor}}</p>
+          </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="NotFound" *ngIf="nextCredit == 0">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title><ion-icon name="sad"></ion-icon></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h1 class="head">No es posible calcular un posible credito.</h1>
+          <p class="text">Este cliente no posee cuentas de ahorro o corriente en el banco o su credito esta en cero.</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

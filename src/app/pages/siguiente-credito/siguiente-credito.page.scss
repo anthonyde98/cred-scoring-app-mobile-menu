@@ -1,0 +1,82 @@
+ion-card.md{
+    margin: 20px;
+    padding: 0 5px;
+}
+
+.md ion-buttons.ios{
+    display: none;
+}
+
+.ios ion-buttons.md{
+    display: none;
+}
+
+.ios ion-title{
+    left: 30px
+}
+
+.md ion-title{
+    margin-left: -20px;
+}
+
+.ios ion-buttons{
+    margin-bottom: 5px;
+    color: rgb(231, 53, 157);
+}
+
+ion-menu-button{
+    color: rgb(231, 53, 157);
+}
+
+ion-card-title{
+    font-size: 25px;
+}
+
+ion-card-header{
+    text-align: center;
+}
+
+.quantity, .services{
+    text-align: center;
+    margin: 20px;
+}
+
+.quantity ion-icon{
+    font-size: 35px;
+    color: rgb(4, 167, 4);
+}
+
+.head{
+    color: rgb(115, 157, 236);
+    font-size: 23px;
+    margin-top: 10px;
+}
+.text{
+    color: #ffffff;
+    font-size: 19px;
+    text-align: center;
+}
+.services .head{
+    margin-bottom: 4px;
+}
+.services .text{
+    margin-bottom: 2px;
+}
+
+ion-icon{
+    margin-bottom: -2px;
+}
+
+.NotFound ion-icon{
+    margin-top: 20px;
+    font-size: 60px;
+    color: rgb(226, 78, 164);
+}
+.NotFound .head{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.NotFound .text{
+    font-size: 18px;
+    text-align: left;
+}

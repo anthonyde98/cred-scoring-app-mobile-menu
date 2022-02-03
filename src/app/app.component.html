@@ -1,10 +1,10 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
+  <ion-split-pane contentId="main-content" >
+    <ion-menu contentId="main-content" type="overlay" *ngIf="ruta">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+          <ion-list-header><ion-icon class="speed" name="speedometer-outline"></ion-icon>CSApp Mobile<span class="dot">.</span></ion-list-header>
+          <ion-note class="cn">Fihogar</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
@@ -13,15 +13,15 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
+        <ion-card color="dark-tint" class="info">
+          <ion-item lines="none" detail="false">
+            <ion-icon position="stacked" name="person-circle-outline"></ion-icon>
+            <ion-label position="stacked">{{ user }}</ion-label>
+            <ion-button (click)="cerrarSesion()">
+              <ion-icon class="exicon" slot="start" name="exit-outline"></ion-icon> Cerrar sesión
+            </ion-button>
           </ion-item>
-        </ion-list>
+        </ion-card>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

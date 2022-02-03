@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="speedometer-outline" text-center></ion-icon>
+      CredScoringApp Mobile<span class="dot">.</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+      <ion-icon class="icon" name="person-circle-outline"></ion-icon>
+
+      <ion-card class="titulo">
+        <ion-card-content>
+          <h1>Bienvenido</h1>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="form">
+        <ion-card-header>
+          <ion-card-title>Iniciar sesión</ion-card-title>
+          <ion-spinner *ngIf="spinner" name="circles"></ion-spinner>
+        </ion-card-header>
+        <ion-card-content>
+          <form class="formulario" [formGroup]="usuarioForm" (ngSubmit)="buscarExisteUsuario()">
+            <!-- USERNAME INPUT -->
+            <div class="us">
+              <span><ion-icon [style.color]="estiloInput('user')" name="person-circle-outline"></ion-icon></span>
+                <input type="text" placeholder="Ingresar usuario" formControlName="user" autofocus required>
+            </div>
+                <!-- PASSWORD INPUT -->
+            <div class="ps">
+              <span><ion-icon [style.color]="estiloInput('pass')" name="key-outline"></ion-icon></span>
+                <input type="password" placeholder="Ingresar contraseña" formControlName="pass" required>
+            </div>
+            <div>
+              <input [disabled]="this.usuarioForm.invalid" type="submit" value="Iniciar" />
+            </div>
+          </form>
+        </ion-card-content>
+      </ion-card>
+  </div>
+</ion-content>
+

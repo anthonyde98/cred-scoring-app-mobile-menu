@@ -1,0 +1,54 @@
+ion-card.md{
+    margin: 20px;
+    padding: 0 5px;
+}
+
+.md ion-buttons.ios{
+    display: none;
+}
+
+.ios ion-buttons.md{
+    display: none;
+}
+
+.ios ion-title{
+    left: 30px
+}
+
+.md ion-title{
+    margin-left: -20px;
+}
+
+.ios ion-buttons{
+    margin-bottom: 5px;
+    color: rgb(231, 53, 157);
+}
+
+ion-menu-button{
+    color: rgb(231, 53, 157);
+}
+
+ion-card-title{
+    font-size: 25px;
+}
+
+ion-card-header{
+    text-align: center;
+}
+
+.head{
+    color: rgb(115, 157, 236);
+    font-size: 17px;
+    margin-top: 10px;
+}
+.text{
+    color: #ffffff;
+    font-size: 15px;
+}
+.work{
+    margin-bottom: 20px;
+}
+
+ion-icon{
+    margin-bottom: -2px;
+}

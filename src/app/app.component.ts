@@ -1,18 +1,34 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+import { ClienteService } from './services/cliente.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  user = sessionStorage.getItem('usuario');
+  ruta: boolean = true;
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Información', url: 'informacion', icon: 'information-circle' },
+    { title: 'Puntaje', url: 'puntaje', icon: 'star-half' },
+    { title: 'Crédito actual', url: 'credito-actual', icon: 'time' },
+    { title: 'Próximo crédito', url: 'siguiente-credito', icon: 'play-forward' }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+
+  constructor(private location: Location, private cs: ClienteService,) {}
+
+  ngOnInit() {
+    if(this.location.path() == "" || this.location.path() == "/login")
+      this.ruta = false;
+    else{
+      this.cs.setCliente(JSON.parse(sessionStorage.getItem('cliente') || '{}'))
+    }
+  }
+
+  cerrarSesion(){
+    sessionStorage.clear();
+    location.href = "/login";
+  }
 }

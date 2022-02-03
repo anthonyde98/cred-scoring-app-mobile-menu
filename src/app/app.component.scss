@@ -1,3 +1,69 @@
+.speed {
+  margin-right: 10px;
+  color: rgb(231, 53, 157);
+  font-size: 25px;
+}
+
+.dot{
+  color:rgb(231, 53, 157)
+}
+
+.cn{
+  color: rgb(224, 134, 187);
+  margin-top: 5px;
+}
+
+.info{
+  margin-top: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(71, 71, 71);
+}
+
+.info ion-item.ios{
+  padding-left: 10px;
+}
+.info ion-item.md{
+  padding-left: 15px;
+}
+
+.info ion-item{
+  margin: 20px 0;
+
+  ion-icon.md, ion-icon.ios{
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 60px;
+    color: rgb(231, 53, 157);
+  }
+  ion-label.ios, ion-label.md{
+    margin: auto;
+    font-size: 20px;
+  }
+  ion-label.ios{
+    margin-bottom: 20px;
+  }
+  ion-label.md{
+    margin-right: 20px;
+    margin-bottom: 25px;
+  }
+  ion-button{
+    margin: auto;
+    height: 35px;
+    width: 10rem;
+    --background: rgb(231, 53, 157);
+    color: #fff;
+
+    .exicon{
+      color: #fff !important;
+      font-size: 15px !important;
+      margin: 2px !important;
+      margin-right: 3px !important;
+    }
+  }
+}
+
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
@@ -116,4 +182,22 @@ ion-note {
 
 ion-item.selected {
   --color: var(--ion-color-primary);
+}
+
+@media (max-width: 300px){
+  .info ion-item ion-label.md{
+    margin-right: 0px;
+  }
+}
+
+@media (min-width: 1000px){
+  .info ion-item ion-label.md{
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 1250px){
+  .info ion-item ion-label.md{
+    margin-right: 45px;
+  }
 }

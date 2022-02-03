@@ -1,15 +1,39 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, Route, RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
+const routes: Routes = sessionStorage['auth_token'] == null && sessionStorage['access_token'] == null ? 
+[
   {
-    path: '',
-    redirectTo: 'folder/Inbox',
+    path: '**',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  }
+] : 
+[
+  {
+    path: 'informacion',
+    loadChildren: () => import('./pages/informacion/informacion.module').then( m => m.InformacionPageModule)
+  },
+  {
+    path: 'puntaje',
+    loadChildren: () => import('./pages/puntaje/puntaje.module').then( m => m.PuntajePageModule)
+  },
+  {
+    path: 'credito-actual',
+    loadChildren: () => import('./pages/credito-actual/credito-actual.module').then( m => m.CreditoActualPageModule)
+  },
+  {
+    path: 'siguiente-credito',
+    loadChildren: () => import('./pages/siguiente-credito/siguiente-credito.module').then( m => m.SiguienteCreditoPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'informacion',
+    pathMatch: 'full'
   }
 ];
 

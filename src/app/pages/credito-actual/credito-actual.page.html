@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Crédito actual</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ios">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title size="large">Crédito actual</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="container">
+    <div *ngIf="currentCredit.loans.loansQuantity > 0">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Prestamos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="head"><ion-icon name="calculator"></ion-icon> Cantidad</p>
+          <p class="text">{{currentCredit.loans.loansQuantity}}</p>
+          <p class="head"><ion-icon name="calendar-clear"></ion-icon> Completados</p>
+          <p class="text">{{currentCredit.loans.loanStatusCount.completed}}</p>
+          <p class="head"><ion-icon name="time"></ion-icon> En curso</p>
+          <p class="text">{{currentCredit.loans.loanStatusCount.inProgress}}</p>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Pagos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="head"><ion-icon name="calculator"></ion-icon> Cantidad</p>
+          <p class="text">{{currentCredit.payments.goodPayments + currentCredit.payments.badPayments}}</p>
+          <p class="head"><ion-icon name="checkmark-circle"></ion-icon> Correctos</p>
+          <p class="text">{{currentCredit.payments.goodPayments}}</p>
+          <p class="head"><ion-icon name="close-circle"></ion-icon> Incorrectos</p>
+          <p class="text">{{currentCredit.payments.badPayments}}</p>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Prestamos actuales</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div *ngIf="currentCredit.loans.loanStatusCount.inProgress > 0" class="actual"> 
+            <p class="head"><ion-icon name="wallet"></ion-icon> Monto total prestamos</p>
+            <p class="text">{{currentCredit.currentLoans.totalAmount | currency:'DOP':'RD$'}}</p>
+            <p class="head"><ion-icon name="wallet"></ion-icon> Monto total pagado</p>
+            <p class="text">{{currentCredit.currentLoans.totalCurrentAmount | currency:'DOP':'RD$'}}</p>
+            <p class="head"><ion-icon name="wallet"></ion-icon> Monto total pendiente por pagar</p>
+            <p class="text">
+                {{currentCredit.currentLoans.totalAmount - currentCredit.currentLoans.totalCurrentAmount | currency:'DOP':'RD$'}}
+            </p>
+            <p class="head"><ion-icon name="calculator"></ion-icon> Total pagos a realizar</p>
+            <p class="text">{{currentCredit.currentLoans.totalPayments}}</p>
+            <p class="head"><ion-icon name="calendar-clear"></ion-icon> Total pagos realizados</p>
+            <p class="text">{{currentCredit.currentLoans.payments.goodPayments + currentCredit.currentLoans.payments.badPayments}}</p>
+            <p class="head"><ion-icon name="checkmark-circle"></ion-icon> Total pagos correctos</p>
+            <p class="text">{{currentCredit.currentLoans.payments.goodPayments}}</p>
+            <p class="head"><ion-icon name="close-circle"></ion-icon> Total pagos incorrectos</p>
+            <p class="text">{{currentCredit.currentLoans.payments.badPayments}}</p>
+          </div>
+          <div *ngIf="currentCredit.loans.loanStatusCount.inProgress == 0" class="actual">
+            <h1 class="NoProgress">No se encontró prestamos en progreso.</h1>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="NotFound" *ngIf="currentCredit.loans.loansQuantity == 0">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title><ion-icon name="sad"></ion-icon></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h1 class="head">No se encontró prestamos a nombre de este cliente.</h1>
+          <p class="text">Para poder presentar información en esta pantalla el cliente debe de tener prestamos realizados con este banco.</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

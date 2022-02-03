@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Puntaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ios">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title size="large">Puntaje</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Credit score</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="box">
+          <round-progress class="arc"
+            [current]="score.creditScore"
+            [max]="1000"
+            [color]="color.colorScore"
+            [background]="'#eaeaea'"
+            [radius]="100"
+            [stroke]="15"
+            [semicircle]="true"
+            [rounded]="true"
+            [clockwise]="true"
+            [responsive]="true"
+            [duration]="800"
+            [animation]="'easeInOutQuart'"
+            [animationDelay]="0">
+          </round-progress>
+          <div class="arc-text">
+              <span class="text">{{score.creditScore | number : '1.2-2'}}</span>
+              <span class="text">Puntos</span>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title>Probabilidad de no pagar</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <circle-progress *ngIf="historial" class="circle" [percent]="score.unPaymentProbability * 100" [radius]="75"
+          [outerStrokeWidth]="10" [innerStrokeWidth]="100" [outerStrokeColor]="color.colorProbabilidadImpago" 
+          [innerStrokeColor]="'rgb(216, 216, 216)'" [animation]="true" [animationDuration]="300" 
+          [showSubtitle]="false" [animationDuration]="800">
+        </circle-progress>
+        <p *ngIf="!historial" class="time">No posee historial de prestamos.</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title>Tiempo como cliente</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="time">{{tiempo}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
