@@ -28,7 +28,7 @@ export class ClienteService {
         this.detalle = data.body;
         sessionStorage.setItem('cliente', JSON.stringify(this.detalle));
         this.acceso.emit(true);
-      } 
+      }
     }, error => {
       if(error.status === 404){
 

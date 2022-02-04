@@ -19,7 +19,7 @@
 
       <ion-card class="titulo">
         <ion-card-content>
-          <h1>Bienvenido</h1>
+          <ion-label>Bienvenido</ion-label>
         </ion-card-content>
       </ion-card>
 
@@ -41,7 +41,7 @@
                 <input type="password" placeholder="Ingresar contraseña" formControlName="pass" required>
             </div>
             <div>
-              <input [disabled]="this.usuarioForm.invalid" type="submit" value="Iniciar" />
+              <input [disabled]="this.usuarioForm.invalid || !this.conStatus" type="submit" value="Iniciar" />
             </div>
           </form>
         </ion-card-content>

@@ -1,0 +1,115 @@
+ion-card.md{
+    margin: 20px;
+    padding: 0 5px;
+}
+
+.md ion-buttons.ios{
+    display: none;
+}
+
+.ios ion-buttons.md{
+    display: none;
+}
+
+.ios ion-title{
+    left: 30px
+}
+
+.md ion-title{
+    margin-left: -20px;
+}
+
+.ios ion-buttons{
+    margin-bottom: 5px;
+    color: rgb(231, 53, 157);
+}
+
+ion-menu-button{
+    color: rgb(231, 53, 157);
+}
+
+ion-card-title{
+    font-size: 25px;
+}
+
+ion-card-header{
+    text-align: center;
+}
+
+.content{
+    text-align: center;
+    margin: 10px;
+}
+.content ion-icon{
+    font-size: 40px;
+}
+.content ion-icon.ios{
+    margin: 0 5px;
+    margin-bottom: -4px;
+}
+
+.about{
+    margin: 50px 20px;
+}
+.about .title{
+    color: rgba(128, 128, 128, 0.637);
+    font-size: 20px;
+    padding: 15px 6px;
+    border-top: 1px solid rgba(128, 128, 128, 0.637);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.637);
+}
+.contenido{
+    margin: 0 10px;
+}
+.contenido .text{
+    margin-top: 0;
+    color: rgba(128, 128, 128, 0.699);
+    margin-bottom: 30px;
+}
+
+.contact, .madewith{
+    margin-top: 50px;
+    text-align: center;
+}
+.contact p, .madewith p{
+    color: rgba(128, 128, 128, 0.637);
+}
+.contact ion-icon, .madewith ion-icon{
+    font-size: 30px;
+}
+
+.madewith{
+    margin-bottom: 30px;
+}
+
+.git{
+    color: #ffffff;
+    margin-right: 10px;
+}
+.goo{
+    color: brown;
+}
+.face{
+    color: rgb(20, 79, 207);
+    margin-left: 10px;
+}
+
+.h5{
+    color: rgb(255, 102, 0);
+    margin-right: 7px;
+}
+.sc{
+    color: rgb(238, 18, 102);
+    margin-right: 7px;
+}
+.an{
+    color: rgb(163, 27, 9);
+}
+.io{
+    color: rgb(0, 110, 255);
+    margin-left: 7px;
+}
+.nj{
+    color: rgb(73, 148, 3);
+    margin-left: 7px;
+}

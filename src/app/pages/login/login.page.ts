@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConnectivityProvider } from 'src/app/providers/connectivity.provider';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -11,11 +12,15 @@ import { ToastService } from 'src/app/services/toast.service';
 export class LoginPage implements OnInit {
   usuarioForm!: FormGroup;
   spinner = false;
-  constructor(private fb: FormBuilder, private toast: ToastService, private clienteService: ClienteService) {
+  conStatus: boolean = true;
+
+  constructor(private fb: FormBuilder, private toast: ToastService, private clienteService: ClienteService,
+    private net: ConnectivityProvider) {
     this.cargarForm();
   }
 
   ngOnInit() {
+    this.getConexionStatus();
   }
 
   async buscarExisteUsuario(){
@@ -36,6 +41,7 @@ export class LoginPage implements OnInit {
 
       if(data.status == 200){
         sessionStorage.setItem('usuario', this.usuarioForm.get('user')?.value);
+        sessionStorage.setItem('contrasena', this.usuarioForm.get('pass')?.value);
         sessionStorage.setItem('auth_token', data.body.auth_token)
         sessionStorage.setItem('access_token', data.body.access_token)
         sessionStorage.setItem('fechaLogin', new Date().toString())
@@ -68,7 +74,6 @@ export class LoginPage implements OnInit {
       this.spinner = false;      
     });
   }
-  
 
   estiloInput(inputName: string): string{
     let resp = "";
@@ -88,5 +93,13 @@ export class LoginPage implements OnInit {
       user: ["", [Validators.required, Validators.minLength(5)]],
       pass: ["", [Validators.required, Validators.minLength(5)]]
     })  
+  }
+
+  getConexionStatus(){
+    this.net.getStatus().subscribe(status => {
+      if(status){
+        this.conStatus = status.connected;
+      }
+    })
   }
 }

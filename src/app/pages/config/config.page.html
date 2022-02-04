@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Configuración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ios">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title size="large">Configuración</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Configurar acceso con huella dactilar</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="content">
+          <div class="toggle">
+            <ion-icon [style.Color]="!actived ? 'brown' : ''" name="close-circle"></ion-icon>
+            <ion-toggle checked="{{actived}}" color="success" disabled="false" [ngModel]="actived" (ngModelChange)="infoConfig()"></ion-toggle>
+            <ion-icon [style.Color]="actived ? 'rgb(70, 230, 7)' : ''" name="finger-print"></ion-icon>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <div class="about">
+      <h1 class="title">Acerca de</h1>
+      <div class="contenido">
+        <p class="head">Autor</p>
+        <p class="text">Anthony Delanoy Peralta Pérez</p>
+        <p class="head">Versión</p>
+        <p class="text">1.0.0</p>
+
+        <p class="text">El proposito de esta aplicación es academico.</p>
+      </div>
+    </div>
+    <div class="contact">
+      <p>Contactos:</p>
+      <a href="https://github.com/anthonyde98"><ion-icon class="git" name="logo-github"></ion-icon></a>
+      <a href="mailto:anthonyde98@gmail.com"><ion-icon class="goo" name="logo-google"></ion-icon></a>
+      <a href="https://web.facebook.com/anthonyde98/"><ion-icon class="face" name="logo-facebook"></ion-icon></a>
+    </div>
+    <div class="madewith">
+      <p>Construido con:</p>
+      <div class="logos">
+        <ion-icon class="h5" name="logo-html5">Html 5</ion-icon>
+        <ion-icon class="sc" name="logo-sass">Sass</ion-icon>
+        <ion-icon class="an" name="logo-angular">Angular</ion-icon>
+        <ion-icon class="io" name="logo-ionic">Ionic</ion-icon>
+        <ion-icon class="nj" name="logo-nodejs">NodeJs</ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

@@ -31,6 +31,10 @@ const routes: Routes = sessionStorage['auth_token'] == null && sessionStorage['a
     loadChildren: () => import('./pages/siguiente-credito/siguiente-credito.module').then( m => m.SiguienteCreditoPageModule)
   },
   {
+    path: 'config',
+    loadChildren: () => import('./pages/config/config.module').then( m => m.ConfigPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'informacion',
     pathMatch: 'full'
