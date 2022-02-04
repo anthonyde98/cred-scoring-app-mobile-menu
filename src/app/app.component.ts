@@ -70,10 +70,10 @@ export class AppComponent {
 
   toastConexion(){
     if(this.conStatus){
-      this.toastr.toastr("Se ha recuperado la conexión a internet.", "secondary", 3000)
+      this.toastr.toastr("Online.", "success", 4000)
     }
     else
-      this.toastr.toastr("Se ha perdido la conexión a internet.", "danger", 3000)
+      this.toastr.toastr("Offline.", "danger", 4000)
   }
 
   cerrarSesion(){
