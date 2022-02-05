@@ -29,17 +29,8 @@ export class ClienteService {
         sessionStorage.setItem('cliente', JSON.stringify(this.detalle));
         this.acceso.emit(true);
       }
-    }, error => {
-      if(error.status === 404){
-
-        this.toast.toastr("No se encontró este cliente.", "danger", 3000);
-      }
-      else if(error.status === 401){
-        this.toast.toastr(
-          "Esta cuenta acaba de ser iniciada con otro dispositivo.<br/><br/>Vuelva a iniciar sesión para poder tener acceso.",
-          "danger", 3000)
-      }
-      else if(error.status === 500){
+    }, error => {      
+      if(error.status === 500){
         this.toast.toastr(
           "Hubo un error en el servidor principal.<br/><br/>Vuelva a intentar más tarde.",
           "danger", 3000

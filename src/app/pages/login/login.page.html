@@ -44,6 +44,9 @@
               <input [disabled]="this.usuarioForm.invalid || !this.conStatus" type="submit" value="Iniciar" />
             </div>
           </form>
+          <div *ngIf="credentialsOK" class="bio">
+            <ion-button color="light" (click)="fingerPrintAuth()"><ion-icon name="finger-print"></ion-icon></ion-button>
+          </div>
         </ion-card-content>
       </ion-card>
   </div>

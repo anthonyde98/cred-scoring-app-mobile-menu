@@ -25,9 +25,9 @@
       <ion-card-content>
         <div class="content">
           <div class="toggle">
-            <ion-icon [style.Color]="!actived ? 'brown' : ''" name="close-circle"></ion-icon>
-            <ion-toggle checked="{{actived}}" color="success" disabled="false" [ngModel]="actived" (ngModelChange)="infoConfig()"></ion-toggle>
-            <ion-icon [style.Color]="actived ? 'rgb(70, 230, 7)' : ''" name="finger-print"></ion-icon>
+            <ion-icon *ngIf="avaliable" [style.Color]="!actived ? 'brown' : ''" name="close-circle"></ion-icon>
+            <ion-toggle checked="{{actived}}" color="success" disabled="{{!avaliable}}" [ngModel]="actived" (ngModelChange)="infoConfig()"></ion-toggle>
+            <ion-icon *ngIf="avaliable" [style.Color]="actived ? 'rgb(70, 230, 7)' : ''" name="finger-print"></ion-icon>
           </div>
         </div>
       </ion-card-content>
@@ -56,6 +56,7 @@
         <ion-icon class="sc" name="logo-sass">Sass</ion-icon>
         <ion-icon class="an" name="logo-angular">Angular</ion-icon>
         <ion-icon class="io" name="logo-ionic">Ionic</ion-icon>
+        <ion-icon class="ca" name="logo-capacitor">Capacitor</ion-icon>
         <ion-icon class="nj" name="logo-nodejs">NodeJs</ion-icon>
       </div>
     </div>

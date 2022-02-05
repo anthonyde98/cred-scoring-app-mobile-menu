@@ -101,6 +101,15 @@ ion-icon {
   input:disabled{
     background-color: rgb(78, 78, 241)
   }
+
+  .bio{
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+  }
+  .bio ion-button ion-icon{
+    margin: 0 auto;
+  }
   
   @media (max-width: 375px){
     #container {

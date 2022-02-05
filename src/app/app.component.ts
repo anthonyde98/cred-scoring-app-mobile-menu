@@ -1,9 +1,7 @@
-import { Component, HostListener } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component } from '@angular/core';
 import { ClienteService } from './services/cliente.service';
 import { ToastService } from './services/toast.service';
 import * as moment from 'moment';
-import { ConnectivityProvider } from './providers/connectivity.provider';
 
 @Component({
   selector: 'app-root',
@@ -20,21 +18,16 @@ export class AppComponent {
     { title: 'Próximo crédito', url: 'siguiente-credito', icon: 'play-forward' },
     { title: 'Configuración', url: 'config', icon: 'settings' }
   ];
-  conStatus: boolean = true;
-  cont = 0;
 
-  constructor(private location: Location, private cs: ClienteService, private toastr: ToastService,
-    private net: ConnectivityProvider) {}
+  constructor(private cs: ClienteService, private toastr: ToastService) {}
 
   ngOnInit() {
-    if(this.location.path() == "" || this.location.path() == "/login")
+    if(sessionStorage['access_token'] == null && sessionStorage['auth_token'] == null)
       this.ruta = false;
     else{
       this.verificarTimepoAcceso();
       this.cs.setCliente(JSON.parse(sessionStorage.getItem('cliente') || '{}'))
     }
-    this.toastr.toastr(" ", " ", 3000);
-    this.getConexionStatus();
   }
 
   verificarTimepoAcceso(){
@@ -54,26 +47,6 @@ export class AppComponent {
         location.href = "/login";
       }, 1200000 - (tiempo * 60000));
     }
-  }
-
-  getConexionStatus(){
-    this.net.getStatus().subscribe(status => {
-      if(status){
-        this.conStatus = status.connected;
-      }
-      if(this.cont != 0)
-        this.toastConexion()
-      
-      this.cont++
-    })
-  }
-
-  toastConexion(){
-    if(this.conStatus){
-      this.toastr.toastr("Online.", "success", 4000)
-    }
-    else
-      this.toastr.toastr("Offline.", "danger", 4000)
   }
 
   cerrarSesion(){

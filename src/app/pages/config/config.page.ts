@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@capacitor/storage';
-
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -16,12 +15,18 @@ export class ConfigPage implements OnInit {
   constructor(private faio: FingerprintAIO, private toastr: ToastService) { }
 
   ngOnInit() {
-    this.setButton()
     this.availableButton();
   }
 
   async availableButton(){
-    this.showFingerprintAuthDlg()
+    this.faio.isAvailable().then((result: any) => {      
+      this.avaliable = true;
+      this.setButton()
+    })
+    .catch((error: any) => {
+      this.avaliable = false;
+      this.toastr.toastr("La opción biometrica no esta disponible en este dispositivo.", "danger", 5000);
+    });
   }
 
   async setButton(){
@@ -61,32 +66,5 @@ export class ConfigPage implements OnInit {
 
       await Storage.remove({ key: 'credentials' });
     }
-  }
-
-  showFingerprintAuthDlg() {
-
-    this.faio.isAvailable().then((result: any) => {
-      this.toastr.toastr(result, "secondary", 5000);
-
-      this.faio.show({
-        cancelButtonTitle: 'Cancel',
-        description: "Some biometric description",
-        disableBackup: true,
-        title: 'Scanner Title',
-        fallbackButtonTitle: 'FB Back Button',
-        subtitle: 'This SubTitle'
-      })
-      .then((result: any) => {
-        console.log(result)
-        alert("Successfully Authenticated!")
-      })
-      .catch((error: any) => {
-        console.log(error)
-        alert("Match not found!")
-      });
-    })
-    .catch((error: any) => {
-      this.toastr.toastr(error, "danger", 5000);
-    });
   }
 }
