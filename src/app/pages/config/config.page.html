@@ -26,7 +26,7 @@
         <div class="content">
           <div class="toggle">
             <ion-icon *ngIf="avaliable" [style.Color]="!actived ? 'brown' : ''" name="close-circle"></ion-icon>
-            <ion-toggle checked="{{actived}}" color="success" disabled="{{!avaliable}}" [ngModel]="actived" (ngModelChange)="infoConfig()"></ion-toggle>
+            <ion-toggle checked="{{actived}}" color="success" disabled="{{!avaliable}}" (ionChange)="infoConfig($event)"></ion-toggle>
             <ion-icon *ngIf="avaliable" [style.Color]="actived ? 'rgb(70, 230, 7)' : ''" name="finger-print"></ion-icon>
           </div>
         </div>

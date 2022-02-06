@@ -48,10 +48,9 @@ export class ConfigPage implements OnInit {
       this.actived = false;
   }
 
-  async infoConfig(){
-    if(!this.actived){
+  async infoConfig(event){
+    if(event.detail.checked){
       this.actived = true;
-
       const sessionCredentials = {
         username: sessionStorage.getItem('usuario'),
         password: sessionStorage.getItem('contrasena')
@@ -66,7 +65,6 @@ export class ConfigPage implements OnInit {
     }
     else{
       this.actived = false;
-
       await Storage.remove({ key: 'credentials' });
     }
   }
@@ -94,7 +92,6 @@ export class ConfigPage implements OnInit {
 
   async setColorButton(){
     const { value } = await Storage.get({ key: 'color-theme' });
-
 
     if(value == "dark")
       this.color = true;

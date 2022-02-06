@@ -73,13 +73,13 @@ ion-icon {
   input[type="text"], input[type="password"]{
     border: none;
     border-radius: 3px;
-    background: #363636;
     outline: none;
     height: 40px;
     width: 240px;
-    color: #fff;
     font-size: 16px;
-    box-shadow: 0 2px 5px 0 rgb(71, 71, 71);
+    background: #f8f8f8; 
+    color: rgb(0, 0, 0); 
+    box-shadow: 0 2px 5px 0 rgb(146, 146, 146);
   }
   
   span ion-icon{
