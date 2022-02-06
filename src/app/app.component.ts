@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { ClienteService } from './services/cliente.service';
 import { ToastService } from './services/toast.service';
 import * as moment from 'moment';
+import { Storage } from '@capacitor/storage';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent {
     { title: 'Configuración', url: 'config', icon: 'settings' }
   ];
 
-  constructor(private cs: ClienteService, private toastr: ToastService) {}
+  constructor(private cs: ClienteService, private toastr: ToastService, 
+    private renderer: Renderer2) {}
 
   ngOnInit() {
     if(sessionStorage['access_token'] == null && sessionStorage['auth_token'] == null)
@@ -28,6 +30,8 @@ export class AppComponent {
       this.verificarTimepoAcceso();
       this.cs.setCliente(JSON.parse(sessionStorage.getItem('cliente') || '{}'))
     }
+
+    this.setColor();
   }
 
   verificarTimepoAcceso(){
@@ -52,5 +56,10 @@ export class AppComponent {
   cerrarSesion(){
     sessionStorage.clear();
     location.href = "/login";
+  }
+
+  async setColor(){
+    const { value } = await Storage.get({ key: 'color-theme' });
+    this.renderer.setAttribute(document.body, 'color-theme', value);
   }
 }

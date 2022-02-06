@@ -37,13 +37,14 @@ ion-card-header{
 }
 
 .head{
-    color: rgb(115, 157, 236);
+    color: rgb(75, 119, 201);
     font-size: 17px;
     margin-top: 10px;
+    display: block;
 }
 .text{
-    color: #ffffff;
     font-size: 15px;
+    display: block;
 }
 
 ion-icon{
@@ -52,7 +53,6 @@ ion-icon{
 
 .NoProgress{
     text-align: center;
-    color: #ffffff;
     font-size: 30px;
     margin: 10px 0;
 }

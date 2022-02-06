@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Configuración</ion-title>
+    <ion-title color="dark">Configuración</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title size="large">Configuración</ion-title>
+      <ion-title color="dark" size="large">Configuración</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -32,6 +32,18 @@
         </div>
       </ion-card-content>
     </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Cambiar tema</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="content">
+          <div class="toggle"> 
+            <ion-toggle color="light" checked="{{color}}" (ionChange)="cambiarColor($event)"></ion-toggle>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
     <div class="about">
       <h1 class="title">Acerca de</h1>
       <div class="contenido">
@@ -45,7 +57,7 @@
     </div>
     <div class="contact">
       <p>Contactos:</p>
-      <a href="https://github.com/anthonyde98"><ion-icon class="git" name="logo-github"></ion-icon></a>
+      <a href="https://github.com/anthonyde98"><ion-icon color="dark" class="git" name="logo-github"></ion-icon></a>
       <a href="mailto:anthonyde98@gmail.com"><ion-icon class="goo" name="logo-google"></ion-icon></a>
       <a href="https://web.facebook.com/anthonyde98/"><ion-icon class="face" name="logo-facebook"></ion-icon></a>
     </div>

@@ -37,22 +37,23 @@ ion-card-header{
 }
 
 .quantity, .services{
-    text-align: center;
     margin: 20px;
 }
 
 .quantity ion-icon{
+    display: block;
+    margin: 0 auto;
     font-size: 35px;
     color: rgb(4, 167, 4);
+    margin-bottom: 10px;
 }
 
 .head{
-    color: rgb(115, 157, 236);
+    color: rgb(75, 119, 201);
     font-size: 23px;
     margin-top: 10px;
 }
 .text{
-    color: #ffffff;
     font-size: 19px;
     text-align: center;
 }

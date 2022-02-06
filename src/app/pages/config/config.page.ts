@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Storage } from '@capacitor/storage';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { ToastService } from 'src/app/services/toast.service';
@@ -11,11 +11,14 @@ import { ToastService } from 'src/app/services/toast.service';
 export class ConfigPage implements OnInit {
   actived: boolean;
   avaliable: boolean;
+  color:boolean;
 
-  constructor(private faio: FingerprintAIO, private toastr: ToastService) { }
+  constructor(private faio: FingerprintAIO, private toastr: ToastService,
+    private renderer: Renderer2) { }
 
   ngOnInit() {
     this.availableButton();
+    this.setColorButton();
   }
 
   async availableButton(){
@@ -58,7 +61,7 @@ export class ConfigPage implements OnInit {
 
       await Storage.set({
         key: 'credentials',
-        value: JSON.stringify(sessionCredentials),
+        value: JSON.stringify(sessionCredentials)
       });
     }
     else{
@@ -66,5 +69,36 @@ export class ConfigPage implements OnInit {
 
       await Storage.remove({ key: 'credentials' });
     }
+  }
+
+  async cambiarColor(event){
+    await Storage.remove({ key: 'color-theme' });
+    
+    if(event.detail.checked){
+      this.renderer.setAttribute(document.body, 'color-theme', 'dark');
+      
+      await Storage.set({
+        key: 'color-theme',
+        value: "dark"
+      });
+    }
+    else{
+      this.renderer.setAttribute(document.body, 'color-theme', 'light');
+
+      await Storage.set({
+        key: 'color-theme',
+        value: "light"
+      });
+    }
+  }
+
+  async setColorButton(){
+    const { value } = await Storage.get({ key: 'color-theme' });
+
+
+    if(value == "dark")
+      this.color = true;
+    else
+      this.color = false;
   }
 }

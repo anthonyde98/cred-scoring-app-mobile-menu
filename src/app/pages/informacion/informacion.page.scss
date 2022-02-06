@@ -37,12 +37,17 @@ ion-card-header{
 }
 
 .head{
-    color: rgb(115, 157, 236);
+    color: rgb(75, 119, 201);
     font-size: 17px;
     margin-top: 10px;
 }
 .text{
-    color: #ffffff;
+    display: block;
+    font-size: 15px;
+    margin-top: 2px;
+    margin-bottom: 7px;
+}
+.text p{
     font-size: 15px;
 }
 .work{

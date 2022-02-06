@@ -3,17 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Información</ion-title>
+    <ion-title color="dark">Información</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content id="cont-page" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar class="ios">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title size="large">Información</ion-title>
+      <ion-title color="dark" size="large">Información</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -23,20 +23,20 @@
         <ion-card-title>Información básica</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p class="head"><ion-icon name="alert-circle"></ion-icon> Estado</p>
-        <p class="text">{{clienteFormat.estado}}</p>
-        <p class="head"><ion-icon name="reader"></ion-icon> Tipo de entidad</p>
-        <p class="text">{{clienteFormat.tipo}}</p>
-        <p class="head"><ion-icon name="person"></ion-icon> Nombre completo</p>
-        <p class="text">{{clienteFormat.nombre}}</p>
-        <p class="head"><ion-icon name="male-female"></ion-icon> Sexo</p>
-        <p class="text">{{clienteFormat.sexo}}</p>
-        <p class="head"><ion-icon name="today"></ion-icon> Edad</p>
-        <p class="text">{{edad}} años</p>
-        <p class="head"><ion-icon name="heart-circle"></ion-icon> Estado civil</p>
-        <p class="text">{{clienteFormat.estadoCivil}}</p>
-        <p class="head"><ion-icon name="earth"></ion-icon> Nacionalidad</p>
-        <p class="text">{{clienteInfo.Nationality}}</p>
+        <ion-text class="head"><ion-icon name="alert-circle"></ion-icon> Estado</ion-text>
+        <ion-text class="text" color="dark">{{clienteFormat.estado}}</ion-text>
+        <ion-text class="head"><ion-icon name="reader"></ion-icon> Tipo de entidad</ion-text>
+        <ion-text class="text" color="dark">{{clienteFormat.tipo}}</ion-text>
+        <ion-text class="head"><ion-icon name="person"></ion-icon> Nombre completo</ion-text>
+        <ion-text class="text" color="dark">{{clienteFormat.nombre}}</ion-text>
+        <ion-text class="head"><ion-icon name="male-female"></ion-icon> Sexo</ion-text>
+        <ion-text class="text" color="dark">{{clienteFormat.sexo}}</ion-text>
+        <ion-text class="head"><ion-icon name="today"></ion-icon> Edad</ion-text>
+        <ion-text class="text" color="dark">{{edad}} años</ion-text>
+        <ion-text class="head"><ion-icon name="heart-circle"></ion-icon> Estado civil</ion-text>
+        <ion-text class="text" color="dark">{{clienteFormat.estadoCivil}}</ion-text>
+        <ion-text class="head"><ion-icon name="earth"></ion-icon> Nacionalidad</ion-text>
+        <ion-text class="text" color="dark">{{clienteInfo.Nationality}}</ion-text>
       </ion-card-content>
     </ion-card>
     <ion-card >
@@ -45,16 +45,16 @@
       </ion-card-header>
       <ion-card-content>
         <div class="work">
-          <p class="head"><ion-icon name="business"></ion-icon> Institución</p>
-          <p class="text">{{clienteInfo.WorkDetails[0].CompanyName}}</p>
-          <p class="head"><ion-icon name="school"></ion-icon> Profesión</p>
-          <p class="text">{{clienteInfo.WorkDetails[0].ProfessionName}}</p>
-          <p class="head"><ion-icon name="briefcase"></ion-icon> Posición</p>
-          <p class="text">{{clienteInfo.WorkDetails[0].JobTitle}}</p>
+          <ion-text class="head"><ion-icon name="business"></ion-icon> Institución</ion-text>
+          <ion-text class="text" color="dark">{{clienteInfo.WorkDetails[0].CompanyName}}</ion-text>
+          <ion-text class="head"><ion-icon name="school"></ion-icon> Profesión</ion-text>
+          <ion-text class="text" color="dark">{{clienteInfo.WorkDetails[0].ProfessionName}}</ion-text>
+          <ion-text class="head"><ion-icon name="briefcase"></ion-icon> Posición</ion-text>
+          <ion-text class="text" color="dark">{{clienteInfo.WorkDetails[0].JobTitle}}</ion-text>
       </div>
       <div class="id">
-          <p class="head"><ion-icon name="id-card"></ion-icon> Identificación</p>
-          <p class="text">{{clienteInfo.Documents[0].DocumentValue}}</p>
+          <ion-text class="head"><ion-icon name="id-card"></ion-icon> Identificación</ion-text>
+          <ion-text class="text" color="dark">{{clienteInfo.Documents[0].DocumentValue}}</ion-text>
       </div>
       </ion-card-content>
     </ion-card>
@@ -64,24 +64,26 @@
       </ion-card-header>
       <ion-card-content>
         <div class="contact">
-          <p class="head"><ion-icon name="call"></ion-icon> Telefono</p>
-          <p class="text">{{clienteInfo.Contacts[0].PhoneCountryCode}}
+          <ion-text class="head"><ion-icon name="call"></ion-icon> Telefono</ion-text>
+          <ion-text class="text" color="dark">{{clienteInfo.Contacts[0].PhoneCountryCode}}
               {{clienteInfo.Contacts[0].PhoneNumber}}
-          </p>
-          <p class="head"><ion-icon name="mail"></ion-icon> Correo</p>
-          <p class="text">{{clienteInfo.Contacts[0].EmailAddress}}</p>
-      </div>
-      <div class="home">
-          <p class="head"><ion-icon name="home"></ion-icon> Dirección</p>
-          <p class="text">{{clienteInfo.Address[0].StreetName}}
+            </ion-text>
+          <ion-text class="head"><ion-icon name="mail"></ion-icon> Correo</ion-text>
+          <ion-text class="text" color="dark">{{clienteInfo.Contacts[0].EmailAddress}}</ion-text>
+        </div>
+        <div class="home">
+          <ion-text class="head"><ion-icon name="home"></ion-icon> Dirección</ion-text>
+          <ion-text class="text" color="dark">
+            <p>{{clienteInfo.Address[0].StreetName}}
               {{clienteInfo.Address[0].BuildingNumber}}
               {{clienteInfo.Address[0].Department}}
-          </p>
-          <p class="text">Código postal: {{clienteInfo.Address[0].PostCode}}</p>
-          <p class="text">{{clienteInfo.Address[0].TownName}}</p>
-          <p class="text">{{clienteInfo.Address[0].CountrySubDivision}}</p>
-          <p class="text">{{clienteInfo.Address[0].Country}}</p>
-      </div>
+            </p>
+            <p>Código postal: {{clienteInfo.Address[0].PostCode}}</p>
+            <p>{{clienteInfo.Address[0].TownName}}</p>
+            <p>{{clienteInfo.Address[0].CountrySubDivision}}</p>
+            <p>{{clienteInfo.Address[0].Country}}</p>
+          </ion-text>
+        </div>
       </ion-card-content>
     </ion-card>
   </div>

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Puntaje</ion-title>
+    <ion-title color="dark">Puntaje</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title size="large">Puntaje</ion-title>
+      <ion-title color="dark" size="large">Puntaje</ion-title>
     </ion-toolbar>
   </ion-header>
   <div id="container">
@@ -39,8 +39,8 @@
             [animationDelay]="0">
           </round-progress>
           <div class="arc-text">
-              <span class="text">{{score.creditScore | number : '1.2-2'}}</span>
-              <span class="text">Puntos</span>
+              <ion-text color="dark" class="text">{{score.creditScore | number : '1.2-2'}}</ion-text>
+              <ion-text color="dark" class="text">Puntos</ion-text>
           </div>
         </div>
       </ion-card-content>
@@ -49,21 +49,21 @@
       <ion-card-header>
         <ion-card-title>Probabilidad de no pagar</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
+      <ion-card-content class="ion-text-center">
         <circle-progress *ngIf="historial" class="circle" [percent]="score.unPaymentProbability * 100" [radius]="75"
           [outerStrokeWidth]="10" [innerStrokeWidth]="100" [outerStrokeColor]="color.colorProbabilidadImpago" 
           [innerStrokeColor]="'rgb(216, 216, 216)'" [animation]="true" [animationDuration]="300" 
           [showSubtitle]="false" [animationDuration]="800">
         </circle-progress>
-        <p *ngIf="!historial" class="time">No posee historial de prestamos.</p>
+        <ion-text color="dark" *ngIf="!historial" class="time">No posee historial de prestamos.</ion-text>
       </ion-card-content>
     </ion-card>
     <ion-card >
       <ion-card-header>
         <ion-card-title>Tiempo como cliente</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        <p class="time">{{tiempo}}</p>
+      <ion-card-content class="ion-text-center">
+        <ion-text color="dark" class="time">{{tiempo}}</ion-text>
       </ion-card-content>
     </ion-card>
   </div>

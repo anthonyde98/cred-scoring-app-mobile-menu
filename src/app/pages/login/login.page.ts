@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConnectivityProvider } from 'src/app/providers/connectivity.provider';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   credentialsOK: boolean;
 
   constructor(private fb: FormBuilder, private toast: ToastService, private clienteService: ClienteService,
-    private net: ConnectivityProvider, private faio: FingerprintAIO) {
+    private net: ConnectivityProvider, private faio: FingerprintAIO, private renderer: Renderer2) {
     this.cargarForm();
   }
 
@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
     this.getConexionStatus();
     this.credentialsCheck();
     this.fixedKeyboardBug();
+    this.setInputsColor()
   }
 
   async buscarExisteUsuario(){
@@ -180,5 +181,22 @@ export class LoginPage implements OnInit {
     Keyboard.addListener('keyboardWillHide', () => {
       document.getElementById("container").style.top = "45%";
     });
+  }
+
+  async setInputsColor(){
+    const { value } = await Storage.get({ key: 'color-theme' });
+
+    if(value == "light"){
+      this.renderer.setAttribute(document.getElementById("name"), 'style', 
+      'background: #f8f8f8; color: rgb(0, 0, 0); box-shadow: 0 2px 5px 0 rgb(146, 146, 146);');
+      this.renderer.setAttribute(document.getElementById("pass"), 'style', 
+      'background: #f8f8f8; color: rgb(0, 0, 0); box-shadow: 0 2px 5px 0 rgb(146, 146, 146);');
+    }
+    else{
+      this.renderer.setAttribute(document.getElementById("name"), 'style', 
+      'background: #363636; color: #fff; box-shadow: 0 2px 5px 0 rgb(71, 71, 71);');
+      this.renderer.setAttribute(document.getElementById("pass"), 'style', 
+      'background: #363636; color: #fff; box-shadow: 0 2px 5px 0 rgb(71, 71, 71);');
+    }
   }
 }
