@@ -1,6 +1,7 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Storage } from '@capacitor/storage';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { IonContent } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -12,6 +13,9 @@ export class ConfigPage implements OnInit {
   actived: boolean;
   avaliable: boolean;
   color:boolean;
+  scroll: boolean = false;
+
+  @ViewChild(IonContent) content: IonContent;
 
   constructor(private faio: FingerprintAIO, private toastr: ToastService,
     private renderer: Renderer2) { }
@@ -49,13 +53,14 @@ export class ConfigPage implements OnInit {
   }
 
   async infoConfig(event){
+    const sessionCredentials = {
+      username: sessionStorage.getItem('usuario'),
+      password: sessionStorage.getItem('contrasena')
+    }
+
     if(event.detail.checked){
       this.actived = true;
-      const sessionCredentials = {
-        username: sessionStorage.getItem('usuario'),
-        password: sessionStorage.getItem('contrasena')
-      }
-
+      
       await Storage.remove({ key: 'credentials' });
 
       await Storage.set({
@@ -64,8 +69,15 @@ export class ConfigPage implements OnInit {
       });
     }
     else{
+      const { value } = await Storage.get({ key: 'credentials' });
+      const credentials = JSON.parse(value || "0");
+
+      if(credentials != "0" && (credentials.username == sessionCredentials.username && 
+        credentials.password == sessionCredentials.password)){
+        await Storage.remove({ key: 'credentials' });
+      }
+
       this.actived = false;
-      await Storage.remove({ key: 'credentials' });
     }
   }
 
@@ -97,5 +109,12 @@ export class ConfigPage implements OnInit {
       this.color = true;
     else
       this.color = false;
+  }
+  
+  setScroll(event){
+    if(event.detail.scrollTop > 0)  
+      this.scroll = true;
+    else
+      this.scroll = false;
   }
 }

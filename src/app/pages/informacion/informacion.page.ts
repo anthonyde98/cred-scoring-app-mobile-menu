@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import * as moment from 'moment';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-informacion',
@@ -11,7 +12,10 @@ export class InformacionPage implements OnInit {
   clienteInfo: any;
   clienteFormat: any;
   edad!: string;
+  scroll: boolean = false;
 
+  @ViewChild(IonContent) content: IonContent;
+  
   constructor(private clienteService: ClienteService) {}
 
   ngOnInit() {
@@ -79,4 +83,10 @@ export class InformacionPage implements OnInit {
     this.edad = fecha2.diff(fecha1, 'years').toString();
   }
 
+  setScroll(event){
+    if(event.detail.scrollTop > 0)  
+      this.scroll = true;
+    else
+      this.scroll = false;
+  }
 }

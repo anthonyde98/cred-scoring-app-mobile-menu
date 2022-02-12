@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content (ionScroll)="setScroll($event)" [scrollEvents]="true" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar class="ios">
       <ion-buttons slot="start">
@@ -86,3 +86,4 @@
     </div>
   </div>
 </ion-content>
+<app-btn-to-top *ngIf="scroll" [content]="content"></app-btn-to-top>

@@ -6,6 +6,7 @@ import { InformacionPageRoutingModule } from './informacion-routing.module';
 
 import { InformacionPage } from './informacion.page';
 
+import { BtnToTopComponent } from '../../components/btn-to-top/btn-to-top.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { InformacionPage } from './informacion.page';
     IonicModule,
     InformacionPageRoutingModule
   ],
-  declarations: [InformacionPage]
+  declarations: [InformacionPage, BtnToTopComponent]
 })
 export class InformacionPageModule {}

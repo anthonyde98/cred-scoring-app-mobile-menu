@@ -1,0 +1,19 @@
+.btnTop{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    transition: all .2s ease-in-out;
+    display: block;
+}
+
+.btnTop .btn{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px 0 rgba(80, 80, 80, 0.44);
+    background-color: #fffffffb;
+
+    ion-icon{
+        font-size: 30px
+    }
+}

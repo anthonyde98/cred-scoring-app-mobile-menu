@@ -189,13 +189,13 @@ export class LoginPage implements OnInit {
     if(value == "light"){
       this.renderer.setAttribute(document.getElementById("name"), 'style', 
       'background: #f8f8f8; color: rgb(0, 0, 0); box-shadow: 0 2px 5px 0 rgb(146, 146, 146);');
-      this.renderer.setAttribute(document.getElementById("pass"), 'style', 
+      this.renderer.setAttribute(document.getElementById("password"), 'style', 
       'background: #f8f8f8; color: rgb(0, 0, 0); box-shadow: 0 2px 5px 0 rgb(146, 146, 146);');
     }
-    else{
+    else if(value == "dark"){
       this.renderer.setAttribute(document.getElementById("name"), 'style', 
       'background: #363636; color: #fff; box-shadow: 0 2px 5px 0 rgb(71, 71, 71);');
-      this.renderer.setAttribute(document.getElementById("pass"), 'style', 
+      this.renderer.setAttribute(document.getElementById("password"), 'style', 
       'background: #363636; color: #fff; box-shadow: 0 2px 5px 0 rgb(71, 71, 71);');
     }
   }

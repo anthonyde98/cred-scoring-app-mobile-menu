@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import * as moment from 'moment';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-puntaje',
@@ -13,6 +14,9 @@ export class PuntajePage implements OnInit {
   color: any;
   historial: boolean = false;
   tiempo: string = "";
+  scroll: boolean = false;
+
+  @ViewChild(IonContent) content: IonContent;
 
   constructor(private clienteService: ClienteService) {}
 
@@ -74,5 +78,12 @@ export class PuntajePage implements OnInit {
     let pagosBuenos = this.clienteService.getClienteCurrentCredit().payments?.goodPayments || 0;
     let pagosMalos = this.clienteService.getClienteCurrentCredit().payments?.badPayments || 0;
     this.historial =  (pagosMalos + pagosBuenos ) > 0 ? true : false;
+  }
+
+  setScroll(event){
+    if(event.detail.scrollTop > 0)  
+      this.scroll = true;
+    else
+      this.scroll = false;
   }
 }

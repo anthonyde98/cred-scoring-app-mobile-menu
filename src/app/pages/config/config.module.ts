@@ -6,6 +6,8 @@ import { ConfigPageRoutingModule } from './config-routing.module';
 
 import { ConfigPage } from './config.page';
 
+import { BtnToTopComponent } from 'src/app/components/btn-to-top/btn-to-top.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -13,6 +15,6 @@ import { ConfigPage } from './config.page';
     IonicModule,
     ConfigPageRoutingModule
   ],
-  declarations: [ConfigPage]
+  declarations: [ConfigPage, BtnToTopComponent]
 })
 export class ConfigPageModule {}

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-siguiente-credito',
@@ -9,6 +10,10 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class SiguienteCreditoPage implements OnInit {
   nextCredit: any;
   servicios: any;
+  scroll: boolean = false;
+
+  @ViewChild(IonContent) content: IonContent;
+
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit(){
@@ -62,5 +67,12 @@ export class SiguienteCreditoPage implements OnInit {
     }
 
     this.servicios = servicios();
+  }
+  
+  setScroll(event){
+    if(event.detail.scrollTop > 0)  
+      this.scroll = true;
+    else
+      this.scroll = false;
   }
 }

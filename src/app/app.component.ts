@@ -19,7 +19,7 @@ export class AppComponent {
     { title: 'Próximo crédito', url: 'siguiente-credito', icon: 'play-forward' },
     { title: 'Configuración', url: 'config', icon: 'settings' }
   ];
-
+  
   constructor(private cs: ClienteService, private toastr: ToastService, 
     private renderer: Renderer2) {}
 
@@ -60,6 +60,10 @@ export class AppComponent {
 
   async setColor(){
     const { value } = await Storage.get({ key: 'color-theme' });
-    this.renderer.setAttribute(document.body, 'color-theme', value);
+
+    if(value != null)     
+      this.renderer.setAttribute(document.body, 'color-theme', value);
+    else
+      this.renderer.setAttribute(document.body, 'color-theme', 'light');
   }
 }

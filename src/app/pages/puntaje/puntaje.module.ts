@@ -8,6 +8,8 @@ import { PuntajePageRoutingModule } from './puntaje-routing.module';
 
 import { PuntajePage } from './puntaje.page';
 
+import { BtnToTopComponent } from 'src/app/components/btn-to-top/btn-to-top.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,6 @@ import { PuntajePage } from './puntaje.page';
     NgCircleProgressModule.forRoot(),
     RoundProgressModule
   ],
-  declarations: [PuntajePage]
+  declarations: [PuntajePage, BtnToTopComponent]
 })
 export class PuntajePageModule {}
