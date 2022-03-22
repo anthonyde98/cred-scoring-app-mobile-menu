@@ -3,6 +3,8 @@ import { ClienteService } from './services/cliente.service';
 import { ToastService } from './services/toast.service';
 import * as moment from 'moment';
 import { Storage } from '@capacitor/storage';
+import { BackButtonEvent } from '@ionic/angular';
+import { App } from '@capacitor/app';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +34,7 @@ export class AppComponent {
     }
 
     this.setColor();
+    this.backButtonHandler();
   }
 
   verificarTimepoAcceso(){
@@ -65,5 +68,14 @@ export class AppComponent {
       this.renderer.setAttribute(document.body, 'color-theme', value);
     else
       this.renderer.setAttribute(document.body, 'color-theme', 'light');
+  }
+
+  backButtonHandler(){
+    document.addEventListener('ionBackButton', (ev: BackButtonEvent) => {
+      const path = location.pathname;
+      ev.detail.register(-1, () => {
+          App.exitApp();
+      })
+    })
   }
 }
