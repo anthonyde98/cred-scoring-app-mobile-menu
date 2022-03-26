@@ -72,7 +72,6 @@ export class AppComponent {
 
   backButtonHandler(){
     document.addEventListener('ionBackButton', (ev: BackButtonEvent) => {
-      const path = location.pathname;
       ev.detail.register(-1, () => {
           App.exitApp();
       })
